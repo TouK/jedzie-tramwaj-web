@@ -1,0 +1,25 @@
+**/.DS_Store
+nbproject
+manifest.mf
+build.xml
+
+.project
+.settings
+.idea/*
+*.iml
+
+node_modules/
+npm-debug.log
+node/
+
+
+# Bower stuff.
+bower_components/
+
+coverage/
+test/test-results.xml
+test-results.xml
+
+www/
+plugins/
+platforms/
