@@ -23,3 +23,9 @@ test-results.xml
 www/
 plugins/
 platforms/
+
+vars.yaml
+bower.json.bak
+config.coffee.bak
+config.xml.bak
+package.json.bak
