@@ -1,10 +1,14 @@
 {
-  "name": "%appName%",
-  "version": "%version%",
+  "name": "tramap",
+  "version": "0.0.1",
   "description": "warsaw tram map with real gps positions",
   "main": "index.js",
   "scripts": {
-    "postinstall": "bower prune && bower install",
+    "postinstall": "npm run bowerInstall",
+    "bowerInstall": "bower prune && bower install",
+    "prebowerInstall": "npm run prepare",
+    "prepare": "coffee scripts/prepare.coffee",
+    "clean": "coffee scripts/clean.coffee",
     "build": "brunch build --production",
     "start": "brunch watch --server",
     "pretest": "npm install",
