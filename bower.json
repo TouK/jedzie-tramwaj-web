@@ -1,6 +1,6 @@
 {
-  "name": "tramap",
-  "version": "0.0.1",
+  "name": "%appName%",
+  "version": "%version%",
   "authors": [
     "Julian Wielga <j@touk.pl>"
   ],
