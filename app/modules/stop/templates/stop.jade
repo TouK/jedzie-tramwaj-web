@@ -3,4 +3,4 @@
 	.direction {{sc.stop.direction}}
 	.description {{sc.stop.description}}
 	.trams
-		span.tram(ng-repeat='tram in sc.stop.trams') {{tram}}
+		p.tram(ng-repeat='tram in sc.stop.lines') {{tram.tram.id.line}} ({{tram.tram.id.sideNumber}}) {{tram.distanceInMeters.toFixed(0)}}m
