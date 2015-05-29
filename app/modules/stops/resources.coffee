@@ -6,5 +6,5 @@ angular.module 'app.stops.resources', []
 	'$resource'
 	'apiConfig'
 	($resource, api) ->
-		$resource "#{api.url}/stops/:id"
+		$resource "#{api.url}/przystanki/:id"
 ]

@@ -16,12 +16,12 @@ angular.module 'app.routes', [
 		$urlMatcherFactoryProvider.strictMode yes
 
 		$urlRouterProvider
-		.when '/stops/', '/stops'
-		.otherwise '/stops'
+		.when '/przystanki/', '/przystanki'
+		.otherwise '/przystanki'
 
 		$stateProvider
 		.state 'stops',
-			url: '/stops'
+			url: '/przystanki'
 			templateUrl: '/templates/stops/stops.html'
 			controller: 'StopsController as sc'
 			resolve:
@@ -32,7 +32,7 @@ angular.module 'app.routes', [
 				]
 
 		.state 'stop',
-			url: '/stop/:stopId'
+			url: '/przystanek/:stopId'
 			templateUrl: '/templates/stop/stop.html'
 			controller: 'StopController as sc'
 			resolve:
