@@ -1,11 +1,11 @@
 .stops
 	input(ng-model='filterString')
 	a.stop(
-		ng-repeat="stop in sc.stops | filter: filterString"
+		ng-repeat="stop in sc.stops track by $index"
 		ui-sref='stop({stopId:stop.id})'
 	)
 		.name {{stop.name}}
 		.direction {{stop.direction}}
 		.description {{stop.description}}
 		.trams
-			span.tram(ng-repeat='tram in stop.lines') {{tram}}
+			span.tram(ng-repeat='tram in stop.lines track by $index') {{tram}}

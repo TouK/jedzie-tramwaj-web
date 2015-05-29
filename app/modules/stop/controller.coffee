@@ -4,6 +4,11 @@ angular.module 'app.stop.controller', []
 
 .controller 'StopController', [
 	'stop'
+	'$interval'
+	'varsConfig'
 	class StopController
-		constructor: (@stop) ->
+		constructor: (@stop, $interval, vars) ->
+			$interval @refresh, vars.INTERVAL
+
+		refresh: => @stop.$get id: @stop.id
 ]

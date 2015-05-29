@@ -24,7 +24,7 @@ www/
 plugins/
 platforms/
 
-vars.yaml
+./vars.yaml
 bower.json.bak
 config.coffee.bak
 config.xml.bak
