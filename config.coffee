@@ -1,5 +1,3 @@
-{exec} = require 'child_process'
-
 exports.config =
 # See docs at http://brunch.readthedocs.org/en/latest/config.html.
 	conventions:
@@ -36,12 +34,23 @@ exports.config =
 				'js/templates.js': /^app.*[\/\\]templates[\/\\].*jade$/
 
 	plugins:
+		coffeescript:
+			bare: no
+
 		jadeNgtemplates:
 			modules: [
 				name: "templates"
-				pattern: /^app.*[\/\\]templates[\/\\].*jade$/
+				pattern: /^app[\/\\]templates[\/\\].*jade$/
 				url: (path) ->
-					path.replace /.*[\/\\](.*)\.jade$/, '/templates/$1.html'
+					name = path.replace(/^app[\/\\].*templates[\/\\](.*).jade$/, '$1').replace(/[\/\\]/g, '.')
+					return "/templates/#{name}.html"
+			,
+				name: "templates.modules"
+				pattern: /^app[\/\\].*[\/\\]templates[\/\\].*jade$/
+				url: (path) ->
+					dir = path.replace(/^app[\/\\]modules[\/\\](.*)templates[\/\\].*/, '$1')
+					name = path.replace(/^app[\/\\]modules[\/\\].*templates[\/\\](.*).jade$/, '$1').replace(/[\/\\]/g, '.')
+					return "/templates/#{dir}#{name}.html"
 			]
 			jade:
 				pretty: yes
@@ -57,10 +66,16 @@ exports.config =
 				basedir: 'app'
 			htmlmin: no
 
+		assetsmanager:
+			copyTo:
+				fonts: ['bower_components/bootstrap3/dist/fonts/*']
+				img: ['bower_components/bootstrap2/img/*']
+
 
 
 	server:
 		port: 3334
+		base: '/app'
 
 	overrides:
 		production:
