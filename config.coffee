@@ -75,7 +75,7 @@ exports.config =
 
 	server:
 		port: 3334
-		base: '/app'
+		base: ''
 
 	overrides:
 		production:
