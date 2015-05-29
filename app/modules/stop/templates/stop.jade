@@ -1,0 +1,6 @@
+.stop
+	.name {{sc.stop.name}}
+	.direction {{sc.stop.direction}}
+	.description {{sc.stop.description}}
+	.trams
+		span.tram(ng-repeat='tram in sc.stop.trams') {{tram}}

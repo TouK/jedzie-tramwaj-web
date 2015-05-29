@@ -2,7 +2,7 @@
 doctype html
 html(lang='en', ng-app='app', ng-controller='mainController as main')
 	head
-		include /partials/env
+		//include /partials/env
 		meta(charset='utf-8')
 		meta(http-equiv="X-UA-Compatible", content="IE=edge,chrome=1")
 		meta(name='viewport', content='width=device-width')
@@ -16,5 +16,4 @@ html(lang='en', ng-app='app', ng-controller='mainController as main')
 		script(src='js/templates.js')
 		script(src='js/app.js')
 	body
-		h1 works!!
-		//.fill(ui-view)
+		ui-view
