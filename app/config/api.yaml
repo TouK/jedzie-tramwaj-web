@@ -1,4 +1,4 @@
 development:
-  url: 'http://jedzietramwaj.pl'
+  url: 'http://crossorigin.me/http://jedzietramwaj.pl'
 production:
   url: 'http://jedzietramwaj.pl'

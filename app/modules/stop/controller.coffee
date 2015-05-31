@@ -3,12 +3,24 @@
 angular.module 'app.stop.controller', []
 
 .controller 'StopController', [
+	'$scope'
+	'$timeout'
 	'stop'
-	'$interval'
 	'varsConfig'
+	'feedback'
 	class StopController
-		constructor: (@stop, $interval, vars) ->
-			$interval @refresh, vars.INTERVAL
+		constructor: ($scope, @timeout, @stop, @vars, @feedback) ->
+			@refresh()
+			$scope.$on '$destroy', @destructor
 
-		refresh: => @stop.$get id: @stop.id
+		refresh: =>
+			@refreshInterval = @timeout =>
+				@feedback.load()
+				@stop.$get(id: @stop.id).then =>
+					@refresh()
+					@feedback.dismiss()
+			, @vars.INTERVAL
+
+		destructor: =>
+			@timeout.cancel @refreshInterval
 ]

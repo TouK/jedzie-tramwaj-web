@@ -27,8 +27,14 @@ angular.module 'app.routes', [
 			resolve:
 				stops: [
 					'stopsResource'
-					(stops) ->
-						stops.query()
+					'feedback'
+					(stops, feedback) ->
+						feedback.load()
+						promise = stops.query().$promise
+						promise.then (data) ->
+							feedback.dismiss()
+							return data
+						return promise
 				]
 
 		.state 'stop',
@@ -39,8 +45,15 @@ angular.module 'app.routes', [
 				stop: [
 					'$stateParams'
 					'stopsResource'
-					($stateParams, stops) ->
-						stops.get id: $stateParams.stopId
+					'feedback'
+					($stateParams, stops, feedback) ->
+						feedback.load()
+						promise = stops.get(id: $stateParams.stopId).$promise
+						promise.then (data) ->
+							feedback.dismiss()
+							return data
+						return promise
+
 				]
 
 

@@ -1,9 +1,66 @@
-.stops
-	&
-	.stop
-		&
-		.tram
-			margin 5px
+@import nib
+@import '../../app.styl'
 
-		.name
-			font-weight bold
+
+
+
+.stops
+	position relative
+	height 100%
+	display block
+
+	& > .scroller
+		max-height 100%
+		overflow auto
+		overflow-scrolling touch
+
+	.stops-group
+	.sticky-wrap
+		box-sizing border-box
+		& > .name
+			box-sizing border-box
+			color yellow
+			background red
+			padding .5em 1em
+			transition all .1s
+			transform translate3d(0,0,0)
+
+			&.fixed
+				position absolute
+				top 0
+				width 100%
+
+		.next
+		.prev
+			float right
+
+	.stop
+		display block
+		margin 2em 1em
+
+		& > .name
+			font-weight 400
+			font-size 2em
+
+		& > .description
+			font-weight 300
+
+		& > .direction
+			&::before
+				content ' → '
+
+		& > .trams
+			& > .tram
+				box-sizing border-box
+				display inline-block
+				font-size .8em
+				font-family numberFont
+				font-weight 700
+				text-align center
+				line-height 2em
+				width @line-height
+				margin-right (@width / 10)
+				margin-top @margin-right
+				background red
+				color yellow
+

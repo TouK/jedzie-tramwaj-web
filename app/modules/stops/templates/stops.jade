@@ -1,11 +1,20 @@
-.stops
+.stops: .scroller(sticky-titles, du-scroll-container)
 	input(ng-model='filterString')
-	a.stop(
-		ng-repeat="stop in sc.stops track by $index"
-		ui-sref='stop({stopId:stop.id})'
+
+	.stops-group(
+		ng-repeat="(name, group) in sc.stops | filter: filterString | orderBy: 'name' | groupByFirst: 'name'"
 	)
-		.name {{stop.name}}
-		.direction {{stop.direction}}
-		.description {{stop.description}}
-		.trams
-			span.tram(ng-repeat='tram in stop.lines track by $index') {{tram}}
+		span(id="title-{{$index}}")
+			.name(sticky-title)
+				span(du-smooth-scroll, href='#title-{{$index}}') {{name}}
+				span.prev(du-smooth-scroll, href='#title-{{$index-1}}') ▲
+				span.next(du-smooth-scroll, href='#title-{{$index+1}}') ▼
+		a.stop(
+			ng-repeat="stop in group"
+			ui-sref='stop({stopId:stop.id})'
+		).needsclick
+			.name {{stop.name}}
+			.description {{stop.description}}
+				span.direction=' {{stop.direction}}'
+			.trams
+				span.tram(ng-repeat='tram in stop.lines track by $index') {{tram}}

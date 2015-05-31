@@ -1,4 +1,4 @@
 development:
-  INTERVAL:  2000
+  INTERVAL:  5000
 production:
   INTERVAL:  15000

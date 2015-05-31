@@ -1,0 +1,45 @@
+black 	= #000000
+dark 	= #333333
+yellow 	= #ffbb00
+red 	= #ff5500
+white 	= #ffffff
+
+mainFont = 'Oswald', sans-serif
+numberFont = 'Comfortaa', monospace
+
+html
+body
+	height 100%
+
+body
+	font-family mainFont
+	background yellow
+
+a
+	text-decoration inherit
+	color inherit
+	
+.main-spinner
+	position fixed
+	top: 0
+	left: 0
+	right: 0
+	bottom: 0
+	z-index 100
+	background rgba(black, .0)
+	
+ui-view
+[ui-view]
+	&.ng-enter
+	&.ng-leave
+		display block
+		position absolute
+		transition all .5s
+
+	&.ng-leave
+	&.ng-enter.ng-enter-active
+		opacity 1
+
+	&.ng-enter
+	&.ng-leave.ng-leave-active
+		opacity 0
