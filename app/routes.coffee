@@ -5,14 +5,10 @@ angular.module 'app.routes', [
 ]
 
 .config [
-	'$locationProvider'
 	'$stateProvider'
 	'$urlRouterProvider'
 	'$urlMatcherFactoryProvider'
-	($locationProvider, $stateProvider, $urlRouterProvider, $urlMatcherFactoryProvider) ->
-		# Without server side support html5 must be disabled.
-		$locationProvider.html5Mode no
-
+	($stateProvider, $urlRouterProvider, $urlMatcherFactoryProvider) ->
 		$urlMatcherFactoryProvider.strictMode yes
 
 		$urlRouterProvider

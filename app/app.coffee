@@ -48,3 +48,8 @@ angular.module 'app', [
 
 
 ]
+
+.value 'duScrollDuration', 1000
+
+.value 'duScrollEasing', (t) ->
+	if t<.5 then 16*t*t*t*t*t else 1+16*(--t)*t*t*t*t

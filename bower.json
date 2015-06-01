@@ -1,6 +1,6 @@
 {
-  "name": "%appName%",
-  "version": "%version%",
+  "name": "jedzietramwaj",
+  "version": "0.0.1",
   "authors": [
     "Julian Wielga <j@touk.pl>"
   ],

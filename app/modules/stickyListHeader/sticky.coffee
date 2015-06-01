@@ -53,7 +53,7 @@ angular.module 'app.stickyListHeader.sticky', []
 			if (@scroller[0].scrollTop >= next.pos - currentHeight and nextTop >= 0)
 				current.css @cssTransform.create "translate3d(0,#{nextTop - currentHeight}px,0)"
 			else if nextTop < @buffer
-				current.css @cssTransform.create "translate3d(0,-#{currentHeight}px,0)"
+				current.css @cssTransform.create "rotateX(90deg)"
 			else
 				current.css @cssTransform.create "translate3d(0,0,0)"
 

@@ -21,14 +21,26 @@
 			box-sizing border-box
 			color yellow
 			background red
-			padding .5em 1em
-			transition all .1s
+			padding .5em .5em .5em 1em
+			transition all .05s
 			transform translate3d(0,0,0)
 
 			&.fixed
 				position absolute
 				top 0
 				width 100%
+
+				&::before
+					content ''
+					display block
+					background red
+					height 400%
+					width 100%
+					position absolute
+					left 0
+					right 0
+					top 0
+					transform translateY(-100%)
 
 		.next
 		.prev

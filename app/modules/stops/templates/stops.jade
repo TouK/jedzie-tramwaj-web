@@ -1,5 +1,5 @@
 .stops: .scroller(sticky-titles, du-scroll-container)
-	input(ng-model='filterString')
+	//input(ng-model='filterString')
 
 	.stops-group(
 		ng-repeat="(name, group) in sc.stops | filter: filterString | orderBy: 'name' | groupByFirst: 'name'"
@@ -7,8 +7,8 @@
 		span(id="title-{{$index}}")
 			.name(sticky-title)
 				span(du-smooth-scroll, href='#title-{{$index}}') {{name}}
-				span.prev(du-smooth-scroll, href='#title-{{$index-1}}') ▲
-				span.next(du-smooth-scroll, href='#title-{{$index+1}}') ▼
+				span.prev(ng-if="!$first", du-smooth-scroll, href='#title-{{$index-1}}') ▲
+				span.next(ng-if="!$last", du-smooth-scroll, href='#title-{{$index+1}}') ▼
 		a.stop(
 			ng-repeat="stop in group"
 			ui-sref='stop({stopId:stop.id})'

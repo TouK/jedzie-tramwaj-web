@@ -13,21 +13,12 @@ body
 
 body
 	font-family mainFont
-	background yellow
+	background red
 
 a
 	text-decoration inherit
 	color inherit
-	
-.main-spinner
-	position fixed
-	top: 0
-	left: 0
-	right: 0
-	bottom: 0
-	z-index 100
-	background rgba(black, .0)
-	
+
 ui-view
 [ui-view]
 	&.ng-enter
@@ -43,3 +34,24 @@ ui-view
 	&.ng-enter
 	&.ng-leave.ng-leave-active
 		opacity 0
+
+.toolbar
+.view
+	position absolute
+	left 0
+	right 0
+	overflow hidden
+
+.toolbar
+	top 0
+	height 3em
+	background darken(red, 15)
+	color yellow
+	line-height @height
+	padding 0 1em
+	text-align center
+
+.view
+	bottom 0
+	top 3em
+	background yellow
