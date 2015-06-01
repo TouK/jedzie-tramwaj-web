@@ -30,19 +30,22 @@ angular.module 'app.stickyListHeader.sticky', []
 			@titles = []
 
 		add: (title) =>
-			title
-			.css width: "#{@scroller[0].clientWidth}px"
-			.wrap '<div class="sticky-wrap" />'
-			.parent().css
-				height: title[0].clientHeight + 'px'
-
+			title.wrap '<div class="sticky-wrap" />'
 			@update title
 			@titles.push title
 
 		remove: (title) => @titles = _.without @titles, title
 
 		update: (current) =>
+			current
+			.css width: "#{@scroller[0].clientWidth}px"
+			.parent().css
+				height: current[0].clientHeight + 'px'
 			current.pos = current[0].offsetTop
+
+		updateAll: =>
+			for element, i in @titles
+				@unFixTitle element, @titles[i+1]
 
 		fixTitle: (current, next) =>
 			current.addClass 'fixed'
@@ -73,12 +76,13 @@ angular.module 'app.stickyListHeader.sticky', []
 ]
 
 .directive 'stickyTitles', [
-	'$animate'
-	($animate) ->
+	'$window'
+	($window) ->
 		controller: 'StickyTitles'
 		link: (scope, element, attrs, ctrl) ->
 			ctrl.scroller = element
 			element.on 'scroll scrollstart scrollend mousewheel touchstart touchend touchmove gesturechange', -> ctrl.scroll()
+			angular.element($window).on 'resize', -> ctrl.updateAll()
 
 ]
 
