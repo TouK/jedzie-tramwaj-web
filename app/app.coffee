@@ -20,6 +20,7 @@ angular.module 'app', [
 	'angularSpinner'
 	'angular-ladda'
 	'feedback'
+	'touk'
 
 	# jade / html templates and templates
 	'templates'

@@ -8,12 +8,16 @@ angular.module 'app.routes', [
 	'$stateProvider'
 	'$urlRouterProvider'
 	'$urlMatcherFactoryProvider'
-	($stateProvider, $urlRouterProvider, $urlMatcherFactoryProvider) ->
+	'$historyProvider'
+	($stateProvider, $urlRouterProvider, $urlMatcherFactoryProvider, $historyProvider) ->
 		$urlMatcherFactoryProvider.strictMode yes
 
 		$urlRouterProvider
 		.when '/przystanki/', '/przystanki'
 		.otherwise '/przystanki'
+
+		$historyProvider.setHomeState
+			name: 'stops'
 
 		$stateProvider
 		.state 'stops',

@@ -50,6 +50,16 @@ ui-view
 	line-height @height
 	padding 0 1em
 	text-align center
+	position relative
+
+	.back
+		position absolute
+		display block
+		top 0
+		left 0
+		padding 0 1em
+		&::before
+			content '←'
 
 .view
 	bottom 0

@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module 'app.stickyListHeader.sticky', []
+angular.module 'touk.stickyListHeader', []
 
 .service 'cssTransform', class
 
@@ -30,7 +30,9 @@ angular.module 'app.stickyListHeader.sticky', []
 			@titles = []
 
 		add: (title) =>
-			title.wrap '<div class="sticky-wrap" />'
+			wrapper = document.createElement 'div'
+			wrapper.className = 'sticky-wrap'
+			title.wrap wrapper
 			@update title
 			@titles.push title
 
@@ -38,17 +40,18 @@ angular.module 'app.stickyListHeader.sticky', []
 
 		update: (current) =>
 			current
-			.css width: "#{@scroller[0].clientWidth}px"
 			.parent().css
 				height: current[0].clientHeight + 'px'
 			current.pos = current[0].offsetTop
 
 		updateAll: =>
-			for element, i in @titles
-				@unFixTitle element, @titles[i+1]
+			@scroll()
 
 		fixTitle: (current, next) =>
-			current.addClass 'fixed'
+			current
+			.css width: "#{@scroller[0].clientWidth}px"
+			.addClass 'fixed'
+
 			return unless next
 
 			currentHeight = current[0].clientHeight
@@ -61,7 +64,9 @@ angular.module 'app.stickyListHeader.sticky', []
 				current.css @cssTransform.create "translate3d(0,0,0)"
 
 		unFixTitle: (current, next) =>
-			current.removeClass 'fixed'
+			current
+			.css width: null
+			.removeClass 'fixed'
 			@update current
 
 		scroll: => do @scroll = _.throttle =>

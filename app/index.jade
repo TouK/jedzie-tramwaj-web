@@ -21,6 +21,6 @@ html(lang='en', ng-app='app', ng-controller='mainController as main')
 	body
 		.toolbar
 			.title Wybierz przystanek
-			//-a.btn.back(ui-sref='^') back
+			a.btn.back(ng-click='$history.back()', ng-if='$history.hasPrevious()')
 		//.main-spinner(us-spinner)
 		ui-view.view
